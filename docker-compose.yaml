@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  nginx: # login guest:guest
+    image: nginx:latest
+    container_name: some-nginx
+    expose:
+      - 8080
+
+  test:
+    image: doravidan/test:latest
+    depends_on:
+      - nginx
+    links:
+      - nginx
